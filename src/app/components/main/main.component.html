@@ -1,0 +1,220 @@
+<div class="main-container">
+  <section class="top-section">
+    <div class="grid-container">
+      <!-- Cancha 1 -->
+      <div class="grid-item" *ngIf="userRole === 'admin'">
+        <img src="assets/img/cancha1.jpg" alt="Cancha 1" />
+        <div class="overlay">
+          <h3>Cancha 1</h3>
+          <button (click)="showModal('Cancha 1')">Ver más</button>
+        </div>
+      </div>
+
+      <!-- Cancha 2 -->
+      <div class="grid-item" *ngIf="userRole === 'admin'">
+        <img src="assets/img/cancha2.jpg" alt="Cancha 2" />
+        <div class="overlay">
+          <h3>Cancha 2</h3>
+          <button (click)="showModal('Cancha 2')">Ver más</button>
+        </div>
+      </div>
+
+      <!-- Cancha 3 -->
+      <div class="grid-item" *ngIf="userRole === 'admin'">
+        <img src="assets/img/cancha3.jpg" alt="Cancha 3" />
+        <div class="overlay">
+          <h3>Cancha 3</h3>
+          <button (click)="showModal('Cancha 3')">Ver más</button>
+        </div>
+      </div>
+
+      <!-- Sala de Prensa -->
+      <div class="grid-item" *ngIf="userRole === 'admin'">
+        <img src="assets/img/prensa.jpg" alt="Auditorio" />
+        <div class="overlay">
+          <h3>Sala de Prensa</h3>
+          <button (click)="showModal('Auditorio')">Ver más</button>
+        </div>
+      </div>
+
+      <!-- Comedor -->
+      <div class="grid-item" *ngIf="userRole === 'admin'">
+        <img src="assets/img/cocina.jpg" alt="Comedor" />
+        <div class="overlay">
+          <h3>Comedor</h3>
+          <button (click)="showModal('Comedor')">Ver más</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div *ngIf="isModalOpen && isCancha1Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2 class="modal-title">Reservar Cancha 1</h2>
+
+      <full-calendar
+        [options]="calendarOptionsCancha1"
+        (dateClick)="onDateClick($event)">
+      </full-calendar>
+
+      <div *ngIf="formVisible" class="form-reserva">
+        <form (ngSubmit)="reservar('Cancha 1')">
+          <div class="form-group">
+            <label for="nombreVisitante">Nombre del Visitante:</label>
+            <input id="nombreVisitante" type="text" class="form-control" [(ngModel)]="reserva.nombreVisitante" name="nombreVisitante">
+          </div>
+          <div class="form-group">
+            <label for="horaInicio">Hora de Inicio:</label>
+            <select id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" (change)="actualizarHorasFin()">
+              <option *ngFor="let hora of horasInicio" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="horaFin">Hora de Fin:</label>
+            <select id="horaFin" class="form-control" [(ngModel)]="reserva.horaFin" name="horaFin">
+              <option *ngFor="let hora of horasFin" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isModalOpen && isCancha2Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2 class="modal-title">Reservar Cancha 2</h2>
+
+      <full-calendar
+        [options]="calendarOptionsCancha2"
+        (dateClick)="onDateClick($event)">
+      </full-calendar>
+
+      <div *ngIf="formVisible" class="form-reserva">
+        <form (ngSubmit)="reservar('Cancha 2')">
+          <div class="form-group">
+            <label for="nombreVisitante">Nombre del Visitante:</label>
+            <input id="nombreVisitante" type="text" class="form-control" [(ngModel)]="reserva.nombreVisitante" name="nombreVisitante">
+          </div>
+          <div class="form-group">
+            <label for="horaInicio">Hora de Inicio:</label>
+            <select id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" (change)="actualizarHorasFin()">
+              <option *ngFor="let hora of horasInicio" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="horaFin">Hora de Fin:</label>
+            <select id="horaFin" class="form-control" [(ngModel)]="reserva.horaFin" name="horaFin">
+              <option *ngFor="let hora of horasFin" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isModalOpen && isCancha3Modal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2 class="modal-title">Reservar Cancha 3</h2>
+
+      <full-calendar
+        [options]="calendarOptionsCancha3"
+        (dateClick)="onDateClick($event)">
+      </full-calendar>
+
+      <div *ngIf="formVisible" class="form-reserva">
+        <form (ngSubmit)="reservar('Cancha 3')">
+          <div class="form-group">
+            <label for="nombreVisitante">Nombre del Visitante:</label>
+            <input id="nombreVisitante" type="text" class="form-control" [(ngModel)]="reserva.nombreVisitante" name="nombreVisitante">
+          </div>
+          <div class="form-group">
+            <label for="horaInicio">Hora de Inicio:</label>
+            <select id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" (change)="actualizarHorasFin()">
+              <option *ngFor="let hora of horasInicio" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="horaFin">Hora de Fin:</label>
+            <select id="horaFin" class="form-control" [(ngModel)]="reserva.horaFin" name="horaFin">
+              <option *ngFor="let hora of horasFin" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isModalOpen && isComedorModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2 class="modal-title">Reservar Comedor</h2>
+
+      <full-calendar
+        [options]="calendarOptionsComedor"
+        (dateClick)="onDateClick($event)">
+      </full-calendar>
+
+      <div *ngIf="formVisible" class="form-reserva">
+        <form (ngSubmit)="reservar('Comedor')">
+          <div class="form-group">
+            <label for="nombreVisitante">Nombre del Visitante:</label>
+            <input id="nombreVisitante" type="text" class="form-control" [(ngModel)]="reserva.nombreVisitante" name="nombreVisitante">
+          </div>
+          <div class="form-group">
+            <label for="horaInicio">Hora de Inicio:</label>
+            <select id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" (change)="actualizarHorasFin()">
+              <option *ngFor="let hora of horasInicio" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="horaFin">Hora de Fin:</label>
+            <select id="horaFin" class="form-control" [(ngModel)]="reserva.horaFin" name="horaFin">
+              <option *ngFor="let hora of horasFin" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isModalOpen && isAuditorioModal" class="modal">
+    <div class="modal-content">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2 class="modal-title">Reservar Sala de Prensa</h2>
+
+      <full-calendar
+        [options]="calendarOptionsPrensa"
+        (dateClick)="onDateClick($event)">
+      </full-calendar>
+
+      <div *ngIf="formVisible" class="form-reserva">
+        <form (ngSubmit)="reservar('Auditorio')">
+          <div class="form-group">
+            <label for="nombreVisitante">Nombre del Visitante:</label>
+            <input id="nombreVisitante" type="text" class="form-control" [(ngModel)]="reserva.nombreVisitante" name="nombreVisitante">
+          </div>
+          <div class="form-group">
+            <label for="horaInicio">Hora de Inicio:</label>
+            <select id="horaInicio" class="form-control" [(ngModel)]="reserva.horaInicio" name="horaInicio" (change)="actualizarHorasFin()">
+              <option *ngFor="let hora of horasInicio" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="horaFin">Hora de Fin:</label>
+            <select id="horaFin" class="form-control" [(ngModel)]="reserva.horaFin" name="horaFin">
+              <option *ngFor="let hora of horasFin" [value]="hora">{{ hora }}</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-sm">Reservar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

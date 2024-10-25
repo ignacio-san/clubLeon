@@ -1,0 +1,114 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('/assets/img/esmee.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 50px;
+    border-radius: 15px;
+}
+
+.logo-small {
+    width: 120px;
+    margin-bottom: 30px;
+}
+
+.form-box h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 32px;
+    color: white;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-bottom: 2px solid #50C878;
+    font-size: 18px;
+    color: #fff;
+    background: transparent;
+    outline: none;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #fff;
+    transition: 0.5s;
+}
+
+.input-box input:focus ~ label,
+.input-box input:valid ~ label {
+    top: -10px;
+    color: #50C878;
+}
+
+.input-box .icon {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 22px;
+    color: #fff;
+}
+
+.btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #50C878;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #45B76F;
+}

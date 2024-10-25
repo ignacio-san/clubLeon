@@ -1,0 +1,46 @@
+<div class="topbar">
+    <button class="hamburger" (click)="toggleSidebar()">☰</button>
+    <span class="app-title">La Esmeralda</span>
+    <div class="user-menu" (click)="toggleUserMenu()">
+        <i class="bx bx-user"></i>
+        <ul *ngIf="isUserMenuOpen" class="user-options">
+            <li *ngIf="esAdmin()" (click)="navegarARegistro()">Registrar Usuario</li>
+            <li (click)="cerrarSesion()">Cerrar Sesión</li>
+        </ul>
+    </div>
+</div>
+
+<div class="sidebar" [class.collapsed]="isCollapsed">
+    <div class="area-title" (click)="navegarAInicio()">
+        <i class="bx bx-home"></i>
+        <span>Inicio</span>
+    </div>
+
+    <ul class="menu-items">
+        <li *ngFor="let area of areas">
+            <div 
+                class="area-title" 
+                [class.disabled-area]="area.disabled"
+                (click)="area.disabled ? null : toggleArea(area.nombre)">
+                <i [class]="getIconoArea(area.nombre)"></i>
+                <span>{{ area.nombre }}</span>
+                <i [ngClass]="isAreaExpanded(area.nombre) ? 'bx bx-chevron-down' : 'bx bx-chevron-right'"></i>
+            </div>
+
+            <ul *ngIf="!area.disabled" [class.show]="isAreaExpanded(area.nombre)">
+                <li *ngFor="let modulo of area.modulos">
+                    <a 
+                        [routerLink]="['/modulo', modulo]" 
+                        [class.disabled]="!puedeAcceder(modulo)" 
+                        (click)="!puedeAcceder(modulo) ? $event.preventDefault() : onModuloClick(modulo)">
+                        {{ modulo }}
+                    </a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="main-content" [class.collapsed]="isCollapsed">
+    <router-outlet></router-outlet>
+</div>

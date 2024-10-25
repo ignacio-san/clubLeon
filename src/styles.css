@@ -1,0 +1,44 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+.tippy-box {
+  background: linear-gradient(135deg, #6a11cb, #2575fc) !important;
+  color: #fff !important;
+  border-radius: 10px !important;
+  padding: 12px !important;
+  font-size: 14px !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.3s ease-in-out !important;
+}
+
+.tippy-box[data-placement^='top'] > .tippy-arrow {
+  border-top-color: #6a11cb !important;
+}
+
+.tippy-box[data-placement^='bottom'] > .tippy-arrow {
+  border-bottom-color: #2575fc !important;
+}
+
+.tippy-box[data-placement^='left'] > .tippy-arrow {
+  border-left-color: #6a11cb !important;
+}
+
+.tippy-box[data-placement^='right'] > .tippy-arrow {
+  border-right-color: #2575fc !important;
+}
+
+.tippy-content {
+  font-family: 'Segoe UI', sans-serif !important;
+  font-weight: 500 !important;
+  text-align: center !important;
+}
+
+.tippy-box:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+}
+
+.fc-daygrid-day-selected {
+    background-color: lightgreen !important;
+  }
+  

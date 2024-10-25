@@ -1,0 +1,48 @@
+<h2>Registro de Empleados - Área: {{ area }}</h2>
+<form [formGroup]="formEmployee" (ngSubmit)="onRegisterEmployee()">
+  <div class="mb-3">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" formControlName="nombre" required>
+    <div *ngIf="formEmployee.get('nombre')?.invalid && formEmployee.get('nombre')?.touched" class="text-danger">
+      El nombre es obligatorio.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="apellidos" class="form-label">Apellidos</label>
+    <input type="text" class="form-control" formControlName="apellidos" required>
+    <div *ngIf="formEmployee.get('apellidos')?.invalid && formEmployee.get('apellidos')?.touched" class="text-danger">
+      Los apellidos son obligatorios.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="email" class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="email" required>
+    <div *ngIf="formEmployee.get('email')?.invalid && formEmployee.get('email')?.touched" class="text-danger">
+      Ingresa un correo válido.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="password" class="form-label">Password</label>
+    <input type="password" class="form-control" formControlName="password" required>
+    <div *ngIf="formEmployee.get('password')?.invalid && formEmployee.get('password')?.touched" class="text-danger">
+      La contraseña debe tener al menos 6 caracteres.
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="modulos" class="form-label">Módulos</label>
+    <select multiple class="form-control" formControlName="modulos">
+      <option *ngFor="let modulo of modulosDisponibles" [value]="modulo">{{ modulo }}</option>
+    </select>
+    <div *ngIf="formEmployee.get('modulos')?.invalid && formEmployee.get('modulos')?.touched" class="text-danger">
+      Debes seleccionar al menos un módulo.
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Registrar Empleado</button>
+</form>
+
+<button (click)="userService.logout()" class="btn btn-danger mt-3">Cerrar Sesión</button>
